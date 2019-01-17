@@ -1,0 +1,25 @@
+drone-simulator:
+    build: ./drone-simulator
+    links:
+       - vernemq
+drone-server:
+    build: ./backend    
+    links:
+       - vernemq
+    ports:
+       - 9001:9001
+dashboard:
+    build: ./frontend
+    links:
+       - drone-server
+    ports:
+       - 8080:5000
+vernemq:
+  image: erlio/docker-vernemq
+  hostname: vernemq
+  environment:
+    - DOCKER_VERNEMQ_ALLOW_ANONYMOUS=on
+  expose:
+    - "1883"
+
+    

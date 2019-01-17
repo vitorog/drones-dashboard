@@ -1,0 +1,58 @@
+buildscript {
+    ext {
+        springBootPluginVersion = '2.0.4.RELEASE'
+        jacksonVersion = '2.9.5'
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootPluginVersion}")
+    }
+
+}
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'org.springframework.boot' version '2.0.4.RELEASE'
+    id "com.diffplug.gradle.spotless" version "3.13.0"
+}
+apply plugin: 'io.spring.dependency-management'
+
+group 'vitorog'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.integration:spring-integration-mqtt'
+    compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
+    compile 'org.gavaghan:geodesy:1.1.3'
+    compile('org.springframework.boot:spring-boot-starter-websocket')
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.0'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+wrapper {
+    gradleVersion = '4.8'
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+    }
+}
+
+
