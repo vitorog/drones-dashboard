@@ -18,6 +18,9 @@ The dashboard will be accessible in http://localhost:8080
 
 It was created for a programming challenge and as a learning experience.
 
+The dashboard will show the position and speed of the drones, as reported by the server.
+Drones that have 'stopped' (for example, due to a malfunction) are highlighted in 'red'.
+
 ### Project and Modules description
 
 #### VerneMQ broker
